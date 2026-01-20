@@ -1,22 +1,20 @@
 import os
 from dotenv import load_dotenv
-import sys
 from datetime import timedelta
+from pathlib import Path
+
 import dj_database_url
 from corsheaders.defaults import default_headers
 
 load_dotenv()
 
-from pathlib import Path
-
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = False
 
+ALLOWED_HOSTS = ["*", ".onrender.com"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -25,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
@@ -33,19 +32,19 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'corsheaders.middleware.CorsMiddleware',   # 👈 lên đây
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
-
-ALLOWED_HOSTS = ["*", ".onrender.com"]
 
 TEMPLATES = [
     {
@@ -72,15 +71,10 @@ DATABASES = {
     )
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "https://miniproject-zeta-blond.vercel.app",
-    "https://miniproject-minhhoang0305s-projects.vercel.app",
-    "https://miniproject-git-main-minhhoang0305s-projects.vercel.app",
-]
+# ================= CORS & CSRF =================
 
-CSRF_TRUSTED_ORIGINS = [
+CORS_ALLOWED_ORIGINS = [
     "https://miniproject-git-main-minhhoang0305s-projects.vercel.app",
-    "https://miniproject-zeta-blond.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -98,20 +92,11 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     "authorization",
 ]
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+CSRF_TRUSTED_ORIGINS = [
+    "https://miniproject-git-main-minhhoang0305s-projects.vercel.app",
 ]
+
+# ================= DRF / JWT =================
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -127,14 +112,14 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
+# ================= I18N =================
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
+
+# ================= STATIC =================
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
