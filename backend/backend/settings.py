@@ -73,9 +73,16 @@ DATABASES = {
 
 # ================= CORS & CSRF =================
 
+# 👇 QUAN TRỌNG NHẤT (BẮT BUỘC)
+CORS_URLS_REGEX = r"^/api/.*$"
+
 CORS_ALLOWED_ORIGINS = [
     "https://miniproject-git-main-minhhoang0305s-projects.vercel.app",
 ]
+
+# ⚠️ Khuyến nghị: TẠM BẬT ĐỂ TEST
+# Sau khi OK thì có thể xóa dòng này
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -90,6 +97,7 @@ CORS_ALLOW_METHODS = [
 
 CORS_ALLOW_HEADERS = list(default_headers) + [
     "authorization",
+    "content-type",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
