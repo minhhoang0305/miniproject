@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import sys
 from datetime import timedelta
 import dj_database_url
+from corsheaders.defaults import default_headers
 
 load_dotenv()
 
@@ -71,6 +72,24 @@ DATABASES = {
         ssl_require=True,
     )
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "https://miniproject-zeta-blond.vercel.app",
+    "https://miniproject-minhhoang0305s-projects.vercel.app",
+]
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+]
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "authorization",
+]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
