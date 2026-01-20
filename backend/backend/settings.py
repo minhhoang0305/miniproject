@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-c%l7zylw6yewh=if-$$$moi*(r*=d**q90w%ufqj&r*96+!iag'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -42,6 +42,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'backend.urls'
+
+ALLOWED_HOSTS = ["*", ".vercel.app"]
 
 TEMPLATES = [
     {
