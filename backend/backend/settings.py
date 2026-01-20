@@ -44,7 +44,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'backend.urls'
 
-ALLOWED_HOSTS = ["*", ".vercel.app"]
+ALLOWED_HOSTS = ["*", ".onrender.com"]
 
 TEMPLATES = [
     {
