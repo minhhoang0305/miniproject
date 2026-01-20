@@ -6,6 +6,8 @@ import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
 
+console.log("VITE_API_URL =", import.meta.env.VITE_API_URL)
+
 function Logout() {
   localStorage.clear()
   return <Navigate to="/login" />
