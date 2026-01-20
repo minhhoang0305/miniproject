@@ -78,6 +78,13 @@ CORS_ALLOWED_ORIGINS = [
     "https://miniproject-git-main-minhhoang0305s-projects.vercel.app",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://miniproject-git-main-minhhoang0305s-projects.vercel.app",
+    "https://miniproject-zeta-blond.vercel.app",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
 CORS_ALLOW_METHODS = [
     "GET",
     "POST",
