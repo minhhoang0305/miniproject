@@ -17,7 +17,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -34,8 +33,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',   # 👈 lên đây
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -76,6 +75,7 @@ DATABASES = {
 CORS_ALLOWED_ORIGINS = [
     "https://miniproject-zeta-blond.vercel.app",
     "https://miniproject-minhhoang0305s-projects.vercel.app",
+    "https://miniproject-git-main-minhhoang0305s-projects.vercel.app",
 ]
 
 CORS_ALLOW_METHODS = [
@@ -120,7 +120,6 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
 
 LANGUAGE_CODE = 'en-us'
 
