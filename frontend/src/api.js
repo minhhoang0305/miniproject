@@ -1,7 +1,14 @@
 import axios from "axios"
 
+const baseURL = import.meta.env.VITE_API_URL?.replace(/\/$/, "")
+
+console.log("Axios baseURL:", baseURL)
+
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : "http://localhost:8000",
+    baseURL: baseURL || "http://localhost:8000",
+    headers: {
+        "Content-Type": "application/json",
+    },
 })
 
 api.interceptors.request.use(
